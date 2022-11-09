@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vast-Player Example</title>
+        <script src="https://cdn.jsdelivr.net/npm/vast-player@latest/dist/vast-player.min.js"></script> 
+        <style>
+            #container {
+                width: 640px; height: 385px;
+                position: relative;
+            }
+        </style> 
+    </head>
+    <body>
+        <div id="container"></div>
+        <script>
+            (function(VASTPlayer) {
+                'use strict';
+ 
+                var player = new VASTPlayer(document.getElementById('container'));
+ 
+                player.once('AdStopped', function() {
+                    console.log('Ad finished playback!');
+                });
+ 
+                player.load(
+                    'https://mobile.altitude-arena.com/vast?uid=O06EQLK2716ET37DAQ13G37EES&player_width=1920&player_height=1080&app_id=dr.test.app'
+                ).then(function startAd() {
+                    return player.startAd();
+                }).catch(function(reason) {
+                    setTimeout(function() { throw reason; }, 0);
+                });
+            }(window.VASTPlayer));
+        </script> 
+    </body>
+</html>
