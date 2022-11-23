@@ -86,6 +86,7 @@ function component(width, height, color, x, y, type) {
         if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
             crash = false;
         }
+        window.location.replace("https://digitalreef.com");
         return crash;
     }
 }
@@ -94,10 +95,7 @@ function updateGameArea() {
     var x, height, gap, minHeight, maxHeight, minGap, maxGap;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
-            console.log('BATEU NO OBSTACULO')
-            window.location.replace("https://digitalreef.com");
             return;
-            break;
         } 
     }
     myGameArea.clear();
@@ -133,7 +131,7 @@ function accelerate(n) {
 }
 </script>
 <br>
-<button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
+<button ontouchstart="accelerate(-0.2)" ontouchend="accelerate(0.05)">ACCELERATE</button>
 <p>Use the ACCELERATE button to stay in the air</p>
 <p>How long can you stay alive?</p>
 </body>
