@@ -1,0 +1,41 @@
+<script>
+    function getMobileOperatingSystem() {
+       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+       if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+       {
+          return 'iOS';
+       }
+       else if( userAgent.match( /Android/i ) )
+       {
+          return 'Android';
+       }
+       else
+       {
+          return 'unknown';
+       }
+    }
+
+    function onLoad(){
+        window.alert('entrou no onload');
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let deeplinkUrl = urlParams.get('path');
+       switch(getMobileOperatingSystem()){
+           case 'Android':
+                urlLink = deeplinkUrl;
+                break;
+           case 'iOS':
+                urlLink = deeplinkUrl;
+                break;
+           default:
+                break;
+        }
+       location.href = urlLink;
+    }
+    window.onload = onLoad;
+    window.alert('script carregou');
+    </script>
+    
+    <!-- <a id="yourLink1" class="grey-text text-lighten-3" target="_blank">Link1</a>
+    <a id="yourLink2" class="grey-text text-lighten-3" target="_blank">Link2</a>
+    <a id="yourLink3" class="grey-text text-lighten-3" target="_blank">Link3</a> -->
