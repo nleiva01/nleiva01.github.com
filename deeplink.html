@@ -16,7 +16,6 @@
     }
 
     function onLoad(){
-        window.alert('entrou no onload');
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         let deeplinkUrl = urlParams.get('path');
@@ -33,7 +32,6 @@
        location.href = urlLink;
     }
     window.onload = onLoad;
-    window.alert('script carregou');
     </script>
     
     <!-- <a id="yourLink1" class="grey-text text-lighten-3" target="_blank">Link1</a>
